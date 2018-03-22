@@ -111,6 +111,9 @@
 
       # crypto altcoins
       bitcoin 
+
+      # system
+      mkpasswd
     ];
   };
 
@@ -228,6 +231,7 @@
   
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
+   users.mutableUsers = false;
    users.extraUsers.dw = {
      isNormalUser = true;
      extraGroups = [
@@ -241,7 +245,7 @@
      home = "/home/dw";
      createHome = true;
      useDefaultShell = true;
-     password = "thanx1";
+     hashedPassword = "$6$/jq22iSFlUA$K4edOGiK9PYuR8odjJU0o3CFjT0wZ51vNqH01uk8CQ7YuDApnUvLZxgeEWWAp5hJaZeWUbezSPe.FfmJo3jdt/";
      uid = 1000;
    };
 
