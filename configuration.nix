@@ -229,6 +229,12 @@
     };
   };
   
+  # aliases
+  environment.interactiveShellInit = ''
+    alias lsblk="lsblk -o MODEL,VENDOR,NAME,LABEL,SIZE,MOUNTPOINT,FSTYPE";
+    alias gramps="nix-env -p /nix/var/nix/profiles/system --list-generations";
+    alias nixos-rebuild="nixos-rebuild -j 6 --cores 8";
+  '';
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
    users.mutableUsers = false;
