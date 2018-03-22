@@ -76,7 +76,7 @@
       numix-gtk-theme
       numix-icon-theme
       lxappearance
-      gnome-tweak-tool
+      #gnome-tweak-tool
 
       # email
       mutt
@@ -179,7 +179,7 @@
       libinput.enable = true;
       displayManager.lightdm.enable = true;
       desktopManager.gnome3.enable = true;
-      #videoDrivers = [ "nvidia" ];
+      videoDrivers = [ "nvidia" ];
       layout = "us";
     };
     # Enable CUPS to print documents.
@@ -231,6 +231,7 @@
   
   # aliases
   environment.interactiveShellInit = ''
+    alias vi=vim
     alias lsblk="lsblk -o MODEL,VENDOR,NAME,LABEL,SIZE,MOUNTPOINT,FSTYPE";
     alias gramps="nix-env -p /nix/var/nix/profiles/system --list-generations";
     alias nixos-rebuild="nixos-rebuild -j 6 --cores 8";
