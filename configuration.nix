@@ -252,7 +252,7 @@
      ];
      home = "/home/dw";
      createHome = true;
-     useDefaultShell = true;
+     shell = pkgs.fish;
      hashedPassword = "$6$/jq22iSFlUA$K4edOGiK9PYuR8odjJU0o3CFjT0wZ51vNqH01uk8CQ7YuDApnUvLZxgeEWWAp5hJaZeWUbezSPe.FfmJo3jdt/";
      uid = 1000;
    };
