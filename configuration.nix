@@ -253,6 +253,7 @@ in
    users.extraUsers.dw = {
      isNormalUser = true;
      extraGroups = [
+       "audio"
        "wheel"
        "networkmanager"
        "libvirtd"
