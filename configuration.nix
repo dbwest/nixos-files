@@ -4,11 +4,26 @@
 
 { config, pkgs, ... }:
 
+let
+  unstableTarball =
+    fetchTarball
+      https://github.com/NixOS/nixpkgs-channels/archive/nixos-unstable.tar.gz;
+in
 {
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
     ];
+
+  nixpkgs.config = {
+    allowUnfree = true;
+    allowBroken = true; 
+    packageOverrides = pkgs: {
+      unstable = import unstableTarball {
+        config = config.nixpkgs.config;
+      };
+    };
+  };
 
    networking.hostName = "shapeshift"; # Define your hostname.
    networking.networkmanager.enable = true;
@@ -19,11 +34,6 @@
      consoleKeyMap = "us";
      defaultLocale = "en_US.UTF-8";
    };
-
-  nixpkgs.config = {
-    allowUnfree = true;
-    allowBroken = true; 
-  };
 
   # Set your time zone.
    time.timeZone = "America/New_York";
@@ -87,7 +97,7 @@
       mpv
       ncmpcpp
       screenfetch
-      chromium
+      unstable.google-chrome
       firefox
       tor-browser-bundle-bin
       inkscape
@@ -230,8 +240,8 @@
   };
   
   # aliases
-  environment.interactiveShellInit = ''
-    alias shapeshift="pushd && cd /etc/nixos && vim ."
+  programs.fish.interactiveShellInit = ''
+    alias shapeshift="pushd . && cd /etc/nixos && sudo vim ."
     alias vi=vim
     alias lsblk="lsblk -o MODEL,VENDOR,NAME,LABEL,SIZE,MOUNTPOINT,FSTYPE";
     alias gramps="nix-env -p /nix/var/nix/profiles/system --list-generations";
