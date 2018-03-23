@@ -241,11 +241,11 @@ in
   
   # aliases
   programs.fish.interactiveShellInit = ''
-    alias shapeshift="pushd . && cd /etc/nixos && sudo vim ."
+    alias shapeshift="pushd .; and cd /etc/nixos; and sudo vim .; and popd"
     alias vi=vim
-    alias lsblk="lsblk -o MODEL,VENDOR,NAME,LABEL,SIZE,MOUNTPOINT,FSTYPE";
-    alias gramps="nix-env -p /nix/var/nix/profiles/system --list-generations";
-    alias nixos-rebuild="nixos-rebuild -j 6 --cores 8";
+    alias lsblk="lsblk -o MODEL,VENDOR,NAME,LABEL,SIZE,MOUNTPOINT,FSTYPE"
+    alias gramps="nix-env -p /nix/var/nix/profiles/system --list-generations"
+    alias nixos-rebuild="nixos-rebuild -j 6 --cores 8"
   '';
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
