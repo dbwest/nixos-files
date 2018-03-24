@@ -13,6 +13,7 @@ in
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      ./elk.nix
     ];
 
   nixpkgs.config = {
@@ -181,13 +182,20 @@ in
   };
 
   services = {
+    elk = {
+      enable = true;
+      systemdUnits = [ "kibana" "gitlab" "jenkins" "postgres" ];
+    };
+    postgresql = {
+      enable = true;
+      package = pkgs.postgresql94;
+    };
     logind.lidSwitch = "ignore";
     xserver = {
       enable = true;
       autorun = true;
       # Enable touchpad support.
       libinput.enable = true;
-      displayManager.lightdm.enable = true;
       desktopManager.gnome3.enable = true;
       # videoDrivers = [ "nvidia" ];
       layout = "us";
@@ -238,15 +246,22 @@ in
       };
     };
   };
-  
+
+  nix = {
+    trustedBinaryCaches = [ https://cache.nixos.org https://hydra.iohk.io ];
+    binaryCachePublicKeys = [
+      "hydra.iohk.io:f/Ea+s+dFdN+3Y/G+FDgSq+a5NEWhJGzdjvKNGv0/EQ="
+    ];
+  };
+
   # aliases
-  programs.fish.interactiveShellInit = ''
-    alias shapeshift="pushd .; and cd /etc/nixos; and sudo vim .; and popd"
-    alias vi=vim
-    alias lsblk="lsblk -o MODEL,VENDOR,NAME,LABEL,SIZE,MOUNTPOINT,FSTYPE"
-    alias gramps="nix-env -p /nix/var/nix/profiles/system --list-generations"
-    alias nixos-rebuild="nixos-rebuild -j 6 --cores 8"
-  '';
+  programs.fish.shellAliases = {
+    shapeshift = "pushd .; and cd /etc/nixos; and sudo vim .; and popd";
+    vi = "vim";
+    lsblk = "lsblk -o MODEL,VENDOR,NAME,LABEL,SIZE,MOUNTPOINT,FSTYPE";
+    gramps = "nix-env -p /nix/var/nix/profiles/system --list-generations";
+    nixos-rebuild = "nixos-rebuild -j 6 --cores 8";
+  };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
    users.mutableUsers = false;
