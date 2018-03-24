@@ -14,17 +14,17 @@
   boot.blacklistedKernelModules = [ "ideapad_laptop" ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/84dba2f4-cb32-4b65-a2f1-44c0c9d72b41";
+    { device = "/dev/disk/by-uuid/00852d4d-b3fb-40fa-8835-2bdecd328e1c";
       fsType = "ext4";
     };
 
-  fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/D533-0912";
+  fileSystems."/boot/efi" =
+    { device = "/dev/disk/by-uuid/5D3F-0B27";
       fsType = "vfat";
     };
 
   swapDevices =
-    [ { device = "/dev/disk/by-uuid/9f28882e-6889-42a0-b086-7c1b70cc01d6"; }
+    [ { device = "/dev/disk/by-uuid/56ea70f6-a157-4d79-a7ba-0e2739f48f94"; }
     ];
 
   nix.maxJobs = lib.mkDefault 8;

@@ -131,12 +131,15 @@ in
   # Supposedly better for the SSD.
   fileSystems."/".options = [ "noatime" "nodiratime" "discard" ];
 
-  # Use the GRUB 2 boot loader.
-  boot.loader.grub.enable = true;
-  boot.loader.grub.version = 2;
-  boot.loader.grub.device = "nodev";
-  boot.loader.grub.efiSupport = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader.efi.efiSysMountPoint = "/boot/efi";
+  boot.loader.grub = {
+    enable = true;
+    device = "nodev";
+    version = 2;
+    efiSupport = true;
+    extraInitrd = "/boot/initrd.keys.gz";
+  }
 
   # Grub menu is painted really slowly on HiDPI, so we lower the
   # resolution. Unfortunately, scaling to 1280x720 (keeping aspect
@@ -146,11 +149,23 @@ in
   boot.initrd.luks.devices = [
     {
       name = "root";
-      device = "/dev/disk/by-uuid/d0c4dacb-8fbb-4646-a0e1-0d1eb8266321";
+      device = "/dev/disk/by-uuid/63a66883-c104-4307-a4db-4afe908f3e84"; # UUID for /dev/nvme01np2
       preLVM = true;
+      keyFile = "/keyfile0.bin";
       allowDiscards = true;
     }
   ];
+
+  # Data mount
+  fileSystems."/data" = {
+    device = "/dev/disk/by-uuid/f2c17687-f377-40e3-beda-63692f0c9fe0"; # UUID for /dev/mapper/crypted-data
+    encrypted = {
+      enable = true;
+      label = "crypted-data";
+      blkDev = "/dev/disk/by-uuid/16110e14-60fa-4a3e-b49a-fa785c627ccf"; # UUID for /dev/sda1
+      keyFile = "/keyfile1.bin";
+    };  
+  }
 
   networking.firewall.allowedTCPPorts = [ 22 80 ];
 
