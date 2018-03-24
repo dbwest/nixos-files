@@ -165,7 +165,7 @@ in
       blkDev = "/dev/disk/by-uuid/16110e14-60fa-4a3e-b49a-fa785c627ccf"; # UUID for /dev/sda1
       keyFile = "/keyfile1.bin";
     };  
-  }
+  };
 
   networking.firewall.allowedTCPPorts = [ 22 80 ];
 
