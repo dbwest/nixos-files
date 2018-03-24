@@ -139,7 +139,7 @@ in
     version = 2;
     efiSupport = true;
     extraInitrd = "/boot/initrd.keys.gz";
-  }
+  };
 
   # Grub menu is painted really slowly on HiDPI, so we lower the
   # resolution. Unfortunately, scaling to 1280x720 (keeping aspect
