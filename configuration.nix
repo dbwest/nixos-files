@@ -13,13 +13,14 @@ in
   # for autologin into wm
   username = "dw";
 
-  # i3 keybindings
-  i3-config-extra = ./i3config-extra-example.nix; 
-  
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      ./rice.nix
     ];
+
+  # i3 keybindings
+  i3-config-extra = ./i3config-extra-example.nix; 
 
   nixpkgs.config = {
     allowUnfree = true;
