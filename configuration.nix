@@ -69,19 +69,82 @@ in
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
    environment.systemPackages = with pkgs; [
-     # The chosen packages
-     # if it's not essential 'nix' it (as in remove it :0)
-     # The 'Friendly Interactive Shell' -- "Finally, a shell for the 90's!"
-     fish
-     vim
-     git
-     lynx
-     firefox
-     vscode
-     synapse
+      # dev
+      vim_configurable
+      tmux
+      tree
+      screen
+      git
+      mosh
+      fish
+      vscode
+      alacritty
+      ruby
+      chruby
+      hugs
+      python
+      python36
+      go
+      dep
+      gnumake
+      minikube
+      #kubectl
+      ghc
+      gcc
+      git
 
-     # TODO extract to fun module
-     cool-retro-term
+      # desktop
+      gnome3.gnome_terminal
+      gnome3.gnome-screenshot
+      gnome3.nautilus
+      gnome3.eog
+      gnome3.dconf
+      i3lock-color
+      feh
+      rofi
+      numix-gtk-theme
+      numix-icon-theme
+      lxappearance
+      #cool-retro-terminal
+      synapse
+      #gnome-tweak-tool
+
+      # email
+      mutt
+      gnupg
+      gnupg1compat
+
+      # apps
+      mpv
+      ncmpcpp
+      screenfetch
+      unstable.google-chrome
+      firefox
+      tor-browser-bundle-bin
+      inkscape
+      file
+      wineStaging
+      gnome3.file-roller
+      freemind
+
+      # utils
+      wget
+      vlc
+      chromedriver
+      platinum-searcher
+
+      # devops tools
+      gitlab
+      gitlab-runner
+      jenkins
+      buildbot
+      buildbot-worker
+
+      # crypto altcoins
+      bitcoin
+
+      # system
+      mkpasswd
    ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -103,6 +166,11 @@ in
 
   # Enable CUPS to print documents.
   # services.printing.enable = true;
+
+  # Kubernetes
+  services.kubernetes = {
+    roles = ["master" "node"];
+  };
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
