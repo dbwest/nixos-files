@@ -16,9 +16,9 @@ let
 
   i3-config = 
     import ./i3wm/i3config.nix {
-      config-extra = i3-config-extra;
-      terminal = urxvt;
       inherit rofi pkgs conky config wallpaper;
+      config-extra = "/etc/nixos/i3config-extra-example.nix";
+      terminal = urxvt;
     };
 
   i3-config-file =
@@ -69,7 +69,7 @@ in
   services.xserver.displayManager.lightdm.autoLogin
     = if isVm
       then { 
-        user = username; 
+        user = "dw"; 
         enable = true;
       } 
       else 
