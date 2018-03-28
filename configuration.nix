@@ -10,6 +10,12 @@ let
       https://github.com/NixOS/nixpkgs-channels/archive/nixos-unstable.tar.gz;
 in
 {
+  # for autologin into wm
+  username = "dw";
+
+  # i3 keybindings
+  i3-config-extra = ./i3config-extra-example.nix; 
+  
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
