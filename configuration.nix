@@ -71,7 +71,8 @@ in
   # $ nix-env -qaP | grep wget
    environment.systemPackages = with pkgs; [
       # dev
-      vim_configurable
+      #vim_configurable
+      (import ./vim.nix)
       tmux
       tree
       screen
@@ -88,14 +89,14 @@ in
       go
       dep
       gnumake
-      minikube
+      #minikube
       #kubectl
       ghc
       gcc
       git
 
       # desktop
-      gnome3.gnome_terminal
+      #gnome3.gnome_terminal
       gnome3.gnome-screenshot
       gnome3.nautilus
       gnome3.eog
@@ -138,8 +139,6 @@ in
       gitlab
       gitlab-runner
       jenkins
-      buildbot
-      buildbot-worker
 
       # crypto altcoins
       bitcoin
@@ -174,7 +173,16 @@ in
   };
 
   # Enable the X11 windowing system.
-  services.xserver.enable = true;
+  services.xserver = {
+    enable = true;
+    synaptics = {
+      enable = true;
+      twoFingerScroll = true;
+      additionalOptions = ''
+        Option "TapButton2" "3"
+      '';
+    }; 
+  };
 
   virtualisation = {
     libvirtd.enable = true;
@@ -182,7 +190,7 @@ in
     virtualbox.host.enable = true;
   };
 
-  services.xserver.desktopManager.gnome3.enable = true;  
+  #services.xserver.desktopManager.gnome3.enable = true;  
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
    users.mutableUsers = false;

@@ -1,6 +1,6 @@
 { pkgs, rofi, terminal, ...}:
 ''
-set $mod Mod1
+set $mod Mod4
 
 floating_modifier $mod
 
@@ -80,6 +80,10 @@ bindsym $mod+Shift+0 move container to workspace $workspace10
 # volume control
 bindsym XF86AudioLowerVolume exec amixer -q sset Master 3%-
 bindsym XF86AudioRaiseVolume exec amixer -q sset Master 3%+
+
+# Screen brightness controls
+bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
+bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
 
 # connect to my bt headset
 bindsym $mod+Shift+F12 exec echo "connect 00:16:94:1B:01:D8" | bluetoothctl
