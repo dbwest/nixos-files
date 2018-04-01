@@ -66,14 +66,10 @@ in
   };
 
   #TODO: remove these
-  #services.xserver.displayManager.lightdm.autoLogin
-  #  = if isVm
-  #    then { 
-  #      user = "dw"; 
-  #      enable = true;
-  #    } 
-  #    else 
-  #      {};
+  services.xserver.displayManager.lightdm.autoLogin = { 
+    user = "dw"; 
+    enable = true;
+  }; 
 
   services.xserver.windowManager.default = "i3";
 

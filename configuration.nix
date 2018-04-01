@@ -16,6 +16,11 @@ in
       ./rice.nix
     ];
 
+  nix ={
+    binaryCaches = [ "https://cache.nixos.org/"  "https://hydra.iohk.io" ];
+    binaryCachePublicKeys = [ "hydra.iohk.io:f/Ea+s+dFdN+3Y/G+FDgSq+a5NEWhJGzdjvKNGv0/EQ=" ];
+  };
+
   nixpkgs.config = {
     allowUnfree = true;
     allowBroken = true; 
@@ -168,9 +173,9 @@ in
   # services.printing.enable = true;
 
   # Kubernetes
-  services.kubernetes = {
-    roles = ["master" "node"];
-  };
+  #services.kubernetes = {
+  #  roles = ["master" "node"];
+  #};
 
   # Enable the X11 windowing system.
   services.xserver = {
