@@ -88,6 +88,7 @@ in
       gcc
       android-studio
       ansible
+      dialog
       #genymotion
       #androidsdk
       #androidsdk_extras
@@ -192,6 +193,9 @@ in
   programs.bash.enableCompletion = true;
   # programs.mtr.enable = true;
   # programs.gnupg.agent = { enable = true; enableSSHSupport = true; };
+  
+  # make vim the default EDITOR
+  programs.vim.defaultEditor = true;
 
   # List services that you want to enable:
 
