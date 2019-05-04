@@ -69,6 +69,7 @@ in
       (import ./vim.nix)
       tmux
       tmuxPlugins.resurrect
+      tmuxPlugins.continuum
       tree
       #screen
       git
