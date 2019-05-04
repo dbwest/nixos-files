@@ -72,10 +72,10 @@ in
   };
 
   #TODO: remove these
-  #services.xserver.displayManager.lightdm.autoLogin = { 
-  #  user = "dw"; 
-  #  enable = true;
-  #}; 
+  services.xserver.displayManager.lightdm.autoLogin = { 
+    user = "dw"; 
+    enable = true;
+  }; 
 
   services.xserver.windowManager.default = "none";
   services.xserver.desktopManager.default = "plasma5";

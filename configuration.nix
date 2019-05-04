@@ -68,6 +68,7 @@ in
       #vim_configurable
       (import ./vim.nix)
       tmux
+      tmuxinator
       tree
       #screen
       git
@@ -110,6 +111,7 @@ in
       synapse
       gnome3.gnome-tweak-tool
       arc-kde-theme
+      kdeconnect
 
       # email
       #mutt
@@ -151,15 +153,21 @@ in
       #selendroid
 
       # devops tools
-      gitlab
-      gitlab-runner
-      jenkins
+      #gitlab
+      #gitlab-runner
+      #jenkins
 
       # crypto altcoins
       bitcoin
 
       # system
       mkpasswd
+
+      # elk
+      elasticsearch7
+      filebeat7
+      logstash7
+      kibana7
    ];
 
  
@@ -188,11 +196,12 @@ in
     nxg = "nixos-upgrade"; # TODO: sync git in /etc/nixos/* from imports
   };
 
+
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   programs.bash.enableCompletion = true;
   programs.mtr.enable = true;
-  # programs.gnupg.agent = { enable = true; enableSSHSupport = true; };
+  programs.gnupg.agent = { enable = true; enableSSHSupport = true; };
   
   # make vim the default EDITOR
   programs.vim.defaultEditor = true;
@@ -213,6 +222,16 @@ in
 
   # Kubernetes
   #services.kubernetes = {
+  #  kubelet.extraOpts = "--fail-swap-on=false";
+  #  easyCerts = true;
+  #  masterAddress = "localhost";
+  #  addons.dashboard = {
+  #    enable = true;
+  #    rbac = {
+  #      enable = true;
+  #      clusterAdmin = true;
+  #    };
+  #  };
   #  roles = ["master" "node"];
   #};
 
