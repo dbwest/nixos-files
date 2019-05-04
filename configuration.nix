@@ -190,9 +190,6 @@ in
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   programs.bash.enableCompletion = true;
-  programs.fish.interactiveShellInit = ''
-    alias shapeshift 'vim /etc/nixos/configuration.nix'
-  '';
   # programs.mtr.enable = true;
   # programs.gnupg.agent = { enable = true; enableSSHSupport = true; };
 
@@ -245,6 +242,7 @@ in
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
    users.mutableUsers = false;
+   users.groups.plugdev = {};
    users.extraUsers.dw = {
      isNormalUser = true;
      extraGroups = [
