@@ -72,6 +72,7 @@ in
       tree
       #screen
       git
+      tig
       mosh
       #fish
       vscode
