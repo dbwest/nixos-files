@@ -71,41 +71,44 @@ in
       tree
       #screen
       git
-      #mosh
+      mosh
       #fish
       vscode
       #alacritty
       ruby
-      #chruby
+      chruby
       hugs
       python
-      #python36
+      python36
       go
-      #dep
       gnumake
       minikube
       kubectl
       ghc
       gcc
       android-studio
+      ansible
+      #genymotion
       #androidsdk
       #androidsdk_extras
+      #dep
 
       # desktop
-      #gnome3.gnome_terminal
-      #gnome3.gnome-screenshot
-      #gnome3.nautilus
-      #gnome3.eog
-      #gnome3.dconf
+      gnome3.gnome_terminal
+      gnome3.gnome-screenshot
+      gnome3.nautilus
+      gnome3.eog
+      gnome3.dconf
       i3lock-color
       feh
       rofi
       numix-gtk-theme
       numix-icon-theme
       lxappearance
-      cool-retro-term
-      #synapse
-      #gnome-tweak-tool
+      cool-old-term
+      synapse
+      gnome3.gnome-tweak-tool
+      arc-kde-theme
 
       # email
       #mutt
@@ -113,20 +116,22 @@ in
       #gnupg1compat
 
       # apps
+      typora
       vcv-rack
+      renoise
+      unstable.google-chrome
+      firefox
+      gnome3.file-roller
+      freemind
+      taskwarrior
+      #vit
       #mpv
       #ncmpcpp
       #screenfetch
-      unstable.google-chrome
-      firefox
       #tor-browser-bundle-bin
       #inkscape
       #file
       #wineStaging
-      #gnome3.file-roller
-      freemind
-      taskwarrior
-      #vit
 
       # utils
       wget
@@ -135,17 +140,19 @@ in
       platinum-searcher
       htop
       baobab
-      #selendroid
       borgbackup
       ntfs3g
       gparted
       file
       citrix_receiver
+      bmon
+      appimage-run
+      #selendroid
 
       # devops tools
-      #gitlab
-      #gitlab-runner
-      #jenkins
+      gitlab
+      gitlab-runner
+      jenkins
 
       # crypto altcoins
       bitcoin
@@ -236,8 +243,6 @@ in
     virtualbox.host.enable = true;
   };
 
-  #services.xserver.desktopManager.plasma5.enable = true;  
-
   # Define a user account. Don't forget to set a password with ‘passwd’.
    users.mutableUsers = false;
    users.extraUsers.dw = {
@@ -250,6 +255,7 @@ in
        "vboxusers"
        "dialout"
        "docker"
+       "plugdev"
      ];
      home = "/home/dw";
      createHome = true;

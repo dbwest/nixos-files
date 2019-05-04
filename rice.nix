@@ -60,6 +60,7 @@ in
 
       desktopManager = {
         plasma5.enable = true;
+        gnome3.enable = true;
       };
 
       # Setup i3
@@ -76,7 +77,8 @@ in
   #  enable = true;
   #}; 
 
-  services.xserver.windowManager.default = "i3";
+  services.xserver.windowManager.default = "none";
+  services.xserver.desktopManager.default = "plasma5";
 
   environment.systemPackages = [ pkgs.dunst pkgs.ubuntu_font_family ];
 }
