@@ -68,7 +68,7 @@ in
       #vim_configurable
       (import ./vim.nix)
       tmux
-      tmuxinator
+      tmuxPlugins.resurrect
       tree
       #screen
       git
@@ -256,6 +256,7 @@ in
     #}; 
   };
 
+  hardware.ledger.enable = true;
   hardware.opengl.driSupport32Bit = true;
   hardware.pulseaudio = {
     enable = true;
