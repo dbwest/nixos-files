@@ -220,6 +220,11 @@ in
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
+  # Elastic Stack
+  services.elasticsearch.enable = true;
+  services.logstash.enable = true;
+  services.kibana.enable = true;
+
   # Kubernetes
   #services.kubernetes = {
   #  kubelet.extraOpts = "--fail-swap-on=false";
