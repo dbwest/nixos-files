@@ -67,6 +67,7 @@ in
       # dev
       #vim_configurable
       (import ./vim.nix)
+      vimPlugins.vim-obsession
       tmux
       tmuxPlugins.resurrect
       tmuxPlugins.continuum
@@ -204,6 +205,16 @@ in
   programs.bash.enableCompletion = true;
   programs.mtr.enable = true;
   programs.gnupg.agent = { enable = true; enableSSHSupport = true; };
+  programs.tmux = {
+    enable = true;
+    shortcut = "a";
+    extraTmuxConf = ''
+      set -g @continuum-restore 'on'
+      set -g @resurrect-save 'M-s'
+      set -g @resurrect-restore 'M-r'
+      set -g @resurrect-strategy-vim 'session'
+    ''; 
+  };
   
   # make vim the default EDITOR
   programs.vim.defaultEditor = true;
