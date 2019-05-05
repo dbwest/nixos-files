@@ -69,6 +69,7 @@ in
       (import ./vim.nix)
       vimPlugins.vim-obsession
       tmux
+      tmuxp
       tmuxPlugins.resurrect
       tmuxPlugins.continuum
       tree
@@ -234,8 +235,16 @@ in
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 
+  # Daemon for loc info
+  services.geoclue2.enable = true;
+
   # Reshift for healthy sleep better circadian stuff and stuff
-  services.redshift.enable = true;
+  services.redshift = {
+    enable = true;
+    latitude = "40.0";
+    longitude = "-83.0";
+    provider = "manual";
+  };
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
