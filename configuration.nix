@@ -122,6 +122,8 @@ in
       #gnupg1compat
 
       # apps
+      weechat
+      glowing-bear
       typora
       vcv-rack
       renoise
@@ -231,6 +233,9 @@ in
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
+
+  # Reshift for healthy sleep better circadian stuff and stuff
+  services.redshift.enable = true;
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
