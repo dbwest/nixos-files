@@ -130,6 +130,8 @@ in
       gnome3.file-roller
       freemind
       taskwarrior
+      timewarrior
+      tasksh
       #vit
       #mpv
       #ncmpcpp
