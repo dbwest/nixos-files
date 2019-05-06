@@ -94,6 +94,8 @@ in
       android-studio
       ansible
       dialog
+      lxc
+      lxd
       #genymotion
       #androidsdk
       #androidsdk_extras
@@ -172,10 +174,10 @@ in
       mkpasswd
 
       # elk
-      elasticsearch7
-      filebeat7
-      logstash7
-      kibana7
+      #elasticsearch7
+      #filebeat7
+      #logstash7
+      #kibana7
    ];
 
  
@@ -250,9 +252,9 @@ in
   services.printing.enable = true;
 
   # Elastic Stack
-  services.elasticsearch.enable = true;
-  services.logstash.enable = true;
-  services.kibana.enable = true;
+  #services.elasticsearch.enable = true;
+  #services.logstash.enable = true;
+  #services.kibana.enable = true;
 
   # Kubernetes
   #services.kubernetes = {
@@ -295,6 +297,7 @@ in
   virtualisation = {
     libvirtd.enable = true;
     docker.enable = true;
+    lxd.enable = true;
     virtualbox.host.enable = true;
   };
 
@@ -311,6 +314,7 @@ in
        "vboxusers"
        "dialout"
        "docker"
+       "lxd"
        "plugdev"
      ];
      home = "/home/dw";
